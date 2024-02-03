@@ -19,7 +19,7 @@ def get_args():
 
 def main():
     args = get_args()
-    fasta, clstr = args['fasta'], args['clstr']
+    fasta, clstr = args.fasta, args.clstr
     drop_headers = []
 
     with open(clstr, 'r') as c:

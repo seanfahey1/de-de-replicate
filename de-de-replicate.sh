@@ -18,5 +18,5 @@ done
 
 # remove anything that has 100% similarity with something in another class. then unmerge files.
 cd-hit -c 1 -T 0 -M 0 -i all_files.fasta -o all_files_100.fasta
-python3 unmerge.py -f all_files_100.fasta -c all_files_100.fasta.clstr
+python3 unmerge_100.py -f all_files_100.fasta -c all_files_100.fasta.clstr
 
