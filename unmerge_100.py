@@ -36,9 +36,9 @@ def main():
     print(drop_headers)
 
     for record in SeqIO.parse(fasta, "fasta"):
-        full_header = record.description.split(' ')
-        header = ' '.join(full_header[1:])
-        group = full_header[0]
+        full_header = record.description
+        header = full_header.split('|')[1]
+        group = full_header.split("|")[0]
 
         sequence = str(record.seq)
         if header not in drop_headers:
