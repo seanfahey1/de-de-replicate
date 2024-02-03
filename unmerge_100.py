@@ -27,7 +27,7 @@ def main():
         for cluster in c:
             seq_count = len([x for x in cluster.split('\n') if re.match(r'[0-9]{1,4}/s+', x)])
             if seq_count > 1:
-                headers = re.findall(r'[0-9]+/s+(>.*)$', cluster)
+                headers = re.findall(r'>.*$', cluster)
                 for header in headers:
                     print(header)
                     drop_headers.append(header)
