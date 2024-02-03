@@ -30,10 +30,7 @@ def main():
                 headers = re.findall(r'>.*$', cluster)
                 for header in headers:
                     header = header.split('...')[0].split('|')[-1]
-                    print(header)
                     drop_headers.append(header)
-
-    print(drop_headers)
 
     for record in SeqIO.parse(fasta, "fasta"):
         full_header = record.description
@@ -44,8 +41,9 @@ def main():
         if header not in drop_headers:
             with open(f'{group}_100.fasta', 'a') as out:
                 out.write(f">{header}")
-                out.write(sequence)
                 out.write('\n')
+                out.write(sequence)
+                out.write('\n\n')
 
 
 if __name__ == "__main__":
