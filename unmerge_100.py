@@ -35,17 +35,17 @@ def main():
 
     print(drop_headers)
 
-    # for record in SeqIO.parse(fasta, "fasta"):
-    #     full_header = record.description.split(' ')
-    #     header = ' '.join(full_header[1:])
-    #     group = full_header[0]
-    #
-    #     sequence = str(record.seq)
-    #     if header not in drop_headers:
-    #         with open(f'{group}_100.fasta', 'a') as out:
-    #             out.write(f">{header}")
-    #             out.write(sequence)
-    #             out.write('\n')
+    for record in SeqIO.parse(fasta, "fasta"):
+        full_header = record.description.split(' ')
+        header = ' '.join(full_header[1:])
+        group = full_header[0]
+
+        sequence = str(record.seq)
+        if header not in drop_headers:
+            with open(f'{group}_100.fasta', 'a') as out:
+                out.write(f">{header}")
+                out.write(sequence)
+                out.write('\n')
 
 
 if __name__ == "__main__":
