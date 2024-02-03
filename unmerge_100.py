@@ -25,7 +25,7 @@ def main():
     with open(clstr, 'r') as c:
         c = c.read().split(">Cluster")[1:]
         for cluster in c:
-            seq_count = len([x for x in cluster.split('\n') if re.match(r'[0-9]{1,4}/s+')], x)
+            seq_count = len([x for x in cluster.split('\n') if re.match(r'[0-9]{1,4}/s+', x)])
             if seq_count > 1:
                 headers = re.findall(r'[0-9]+/s+(>.*)$', cluster)
                 for header in headers:
