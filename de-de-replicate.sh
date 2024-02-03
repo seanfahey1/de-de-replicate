@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 files="./*.fasta"
 
 # remove anything w/in a class that's 100% identical, keeps the longer seq.
