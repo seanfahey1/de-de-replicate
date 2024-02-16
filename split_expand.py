@@ -45,12 +45,13 @@ def write_to_file(out_dir, fasta_file_path, group_id, description, sequence):
 
 def main():
     args = get_args()
-    clstr_file_path, fasta_file_path, num_groups, out_dir = (
-        Path(args.c),
-        Path(args.f),
-        args.n,
-        Path(args.o),
-    )
+
+    num_groups = args.n
+    clstr_file_path = Path(args.c)
+    fasta_file_path = Path(args.f)
+    out_dir = Path(args.o)
+    out_dir.mkdir(parents=False, exist_ok=True)
+
     with open(clstr_file_path, "r") as clstr:
         clstrs = clstr.read().split(">Cluster")[1:]
 
