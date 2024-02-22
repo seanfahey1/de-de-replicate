@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 target_dir="$1"
-./hash_descriptors -i "$target_dir"
+./hash_descriptors.py -i "$target_dir"
 
 for file in "$target_dir"/*_hashed_descriptors.fasta; do
 
