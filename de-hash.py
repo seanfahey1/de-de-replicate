@@ -23,7 +23,8 @@ def get_args():
 def main():
     args = get_args()
     input_dir = Path(args.i)
-    hash_table = json.load(args.j)
+    with open(Path(args.j)) as j:
+        hash_table = json.load(j)
 
     for file in input_dir.glob("*.fasta"):
         output_records = []
