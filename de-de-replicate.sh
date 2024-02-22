@@ -7,6 +7,7 @@ for file in "$target_dir"/*.fasta; do
 
   output=${"$file"%%.*}
   clstr_output="$output".clstr
+  echo "  will output to $output"
 
   echo "  running CD-Hit"
   cd-hit -c 0.4 -n 2 -T 0 -M 0 -sc -d 150 -i "$file" -o "$output" > /dev/null
