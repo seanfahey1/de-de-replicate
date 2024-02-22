@@ -33,6 +33,8 @@ def hash_file_descriptors(file):
         description = str(record.description)
         sequence_hash = generate_hash(record)
         hash_table[sequence_hash] = description
+        print(sequence_hash)
+        sys.exit()
 
         record.description = ""
         record.id = ""
