@@ -20,7 +20,7 @@ def get_args():
 
 
 def generate_hash(record):
-    hash_val = str(hashlib.md5(str(record.seq).encode()))
+    hash_val = str(hashlib.md5(str(record.seq).encode()).hexdigest())
     return hash_val
 
 
