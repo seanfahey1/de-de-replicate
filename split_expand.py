@@ -35,12 +35,10 @@ def get_clusters(raw_clusters, num_groups):
         yield descriptors, next(group_iter)
 
 
-def write_to_file(out_dir, fasta_file_path, group_id, description, sequence):
+def write_to_file(out_dir, fasta_file_path, group_id, seq_record):
     out_filename = out_dir / f"{group_id}_{fasta_file_path.name}"
     with open(out_filename, "w") as handle:
-        SeqIO.write(
-            SeqIO.SeqRecord(sequence, description), handle=handle, format="fasta"
-        )
+        SeqIO.write(seq_record, handle=handle, format="fasta")
 
 
 def main():
@@ -61,9 +59,7 @@ def main():
 
     for descriptors, group_id in get_clusters(clstrs, num_groups):
         for description in descriptors:
-            write_to_file(
-                out_dir, fasta_file_path, group_id, description, fasta_dict[description]
-            )
+            write_to_file(out_dir, fasta_file_path, group_id, fasta_dict[description])
 
 
 if __name__ == "__main__":
