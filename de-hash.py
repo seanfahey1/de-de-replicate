@@ -31,7 +31,7 @@ def main():
             record.description = hash_table[record.description]
             output_records.append(record)
 
-        with open(file.stem + "_unhashed.fasta", "w") as handler:
+        with open(file.parent / (file.stem + "_unhashed.fasta"), "w") as handler:
             SeqIO.write(output_records, handler, "fasta")
 
 

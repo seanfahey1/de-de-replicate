@@ -25,7 +25,7 @@ def generate_hash(record):
 
 
 def hash_file_descriptors(file):
-    hash_file = file.stem + "_hashed_descriptors.fasta"
+    hash_file = file.parent / (file.stem + "_hashed_descriptors.fasta")
     output_records = []
     hash_table = {}
 
@@ -34,7 +34,9 @@ def hash_file_descriptors(file):
         sequence_hash = generate_hash(record)
         hash_table[sequence_hash] = description
 
-        record.description = sequence_hash
+        record.description = ""
+        record.id = ""
+        record.name = sequence_hash
         output_records.append(record)
 
     print(f"writing to {hash_file}")
