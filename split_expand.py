@@ -37,7 +37,7 @@ def get_clusters(raw_clusters, num_groups):
 
 def write_to_file(out_dir, fasta_file_path, group_id, seq_record):
     out_filename = out_dir / f"{group_id}_{fasta_file_path.name}"
-    with open(out_filename, "w") as handle:
+    with open(out_filename, "a") as handle:
         SeqIO.write(seq_record, handle=handle, format="fasta")
 
 
