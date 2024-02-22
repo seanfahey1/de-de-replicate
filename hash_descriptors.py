@@ -33,17 +33,16 @@ def hash_file_descriptors(file):
         description = str(record.description)
         sequence_hash = generate_hash(record)
         hash_table[sequence_hash] = description
-        print(sequence_hash)
-        sys.exit()
 
-        record.description = ""
+        record.description = sequence_hash
         record.id = ""
-        record.name = sequence_hash
+        record.name = ""
         output_records.append(record)
 
     print(f"writing to {hash_file}")
     with open(hash_file, "w") as handler:
-        SeqIO.write(output_records, handler, "fasta")
+        for record in output_records:
+            handler.write(f">{record.description}\n{str(record.seq)}\n\n")
 
     return hash_table
 
