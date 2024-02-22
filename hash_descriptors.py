@@ -48,7 +48,7 @@ def hash_file_descriptors(file):
 
 
 def write_hash_table(input_dir, hash_table):
-    with open(input_dir / "hash_table.json") as out:
+    with open(input_dir / "hash_table.json", "w") as out:
         json.dump(hash_table, out)
 
 
