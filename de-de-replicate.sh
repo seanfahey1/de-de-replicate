@@ -5,8 +5,12 @@ target_dir="$1"
 for file in "$target_dir"/*.fasta; do
   echo "starting $file..."
 
-  output=${"$file"%%.*}
+  dirname=$(dirname "$file")
+  filename=$(basename "$file")
+  filename_no_ext="${filename%.*}"
+  output="$dirname/$filename_no_ext"
   clstr_output="$output".clstr
+
   echo "  will output to $output"
 
   echo "  running CD-Hit"
