@@ -28,11 +28,11 @@ def get_clusters(raw_clusters, num_groups):
     for raw_cluster in raw_clusters:
         descriptors = []
         for line in raw_cluster.split("\n"):
-            match = re.search(r">([a-zA-Z0-9]*)\.\.\. ", line).groups()
-            if len(match) > 0:
-                descriptors.extend(match)
+            match = re.search(r">([a-zA-Z0-9]*)\.\.\. ", line)
+            if match is not None:
+                descriptors.extend(match.groups())
 
-            yield descriptors, next(group_iter)
+        yield descriptors, next(group_iter)
 
 
 def write_to_file(out_dir, fasta_file_path, group_id, description, sequence):
