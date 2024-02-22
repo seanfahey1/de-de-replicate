@@ -29,7 +29,7 @@ def hash_file_descriptors(file):
     output_records = []
     hash_table = {}
 
-    for record in SeqIO.parse(file, "fatsa"):
+    for record in SeqIO.parse(file, "fasta"):
         description = str(record.description)
         sequence_hash = generate_hash(record)
         hash_table[sequence_hash] = description
@@ -56,7 +56,7 @@ def main():
 
     for file in fasta_inputs:
         print(f"hashing {file.name}")
-        for record in SeqIO.parse(file, "fatsa"):
+        for record in SeqIO.parse(file, "fasta"):
             hashed_fastas.append(hash_file_descriptors(record))
 
 

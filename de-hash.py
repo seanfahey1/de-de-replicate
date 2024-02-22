@@ -27,7 +27,7 @@ def main():
 
     for file in input_dir.glob("*.fasta"):
         output_records = []
-        for record in SeqIO.parse(file, "fatsa"):
+        for record in SeqIO.parse(file, "fasta"):
             record.description = hash_table[record.description]
             output_records.append(record)
 
