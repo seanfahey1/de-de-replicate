@@ -35,7 +35,7 @@ def hash_file_descriptors(file):
         hash_table[sequence_hash] = description
 
         record.description = sequence_hash
-        record.append(output_records)
+        output_records.append(record)
 
     with open(hash_file, "w") as handler:
         SeqIO.write(output_records, handler, "fasta")
