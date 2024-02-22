@@ -60,6 +60,8 @@ def main():
     hash_table = dict()
 
     for file in fasta_inputs:
+        if "hashed" in file.stem:
+            continue
         print(f"hashing {file.name}")
         file_hash_table = hash_file_descriptors(file)
         hash_table.update(file_hash_table)
