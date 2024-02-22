@@ -37,10 +37,11 @@ def hash_file_descriptors(file):
         record.description = sequence_hash
         output_records.append(record)
 
+    print(f"writing to {hash_file}")
     with open(hash_file, "w") as handler:
         SeqIO.write(output_records, handler, "fasta")
 
-    return hash_file
+    return hash_table
 
 
 def write_hash_table(input_dir, hash_table):
@@ -53,9 +54,14 @@ def main():
     input_dir = Path(args.i)
     fasta_inputs = input_dir.glob("*.fasta")
 
+    hash_table = dict()
+
     for file in fasta_inputs:
         print(f"hashing {file.name}")
-        hash_file_descriptors(file)
+        file_hash_table = hash_file_descriptors(file)
+        hash_table.update(file_hash_table)
+
+    write_hash_table(input_dir, hash_table)
 
 
 if __name__ == "__main__":
