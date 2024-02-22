@@ -50,7 +50,7 @@ def write_hash_table(input_dir, hash_table):
 
 def main():
     args = get_args()
-    input_dir = Path(args["i"])
+    input_dir = Path(args.i)
     fasta_inputs = input_dir.glob("*.fasta")
     hashed_fastas = []
 
