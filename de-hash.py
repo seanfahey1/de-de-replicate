@@ -27,8 +27,8 @@ def main():
         hash_table = json.load(j)
 
     for file in input_dir.glob("*.fasta"):
-        for record in SeqIO.parse(file, "fasta"):
-            with open(file.parent / (file.stem + "_unhashed.fasta"), "w") as handler:
+        with open(file.parent / (file.stem + "_unhashed.fasta"), "w") as handler:
+            for record in SeqIO.parse(file, "fasta"):
                 handler.write(
                     f">{hash_table[record.description]}\n{str(record.seq)}\n\n"
                 )
