@@ -55,6 +55,7 @@ def main():
     hashed_fastas = []
 
     for file in fasta_inputs:
+        print(f"hashing {file.name}")
         for record in SeqIO.parse(file, "fatsa"):
             hashed_fastas.append(hash_file_descriptors(record))
 
