@@ -52,12 +52,10 @@ def main():
     args = get_args()
     input_dir = Path(args.i)
     fasta_inputs = input_dir.glob("*.fasta")
-    hashed_fastas = []
 
     for file in fasta_inputs:
         print(f"hashing {file.name}")
-        for record in SeqIO.parse(file, "fasta"):
-            hashed_fastas.append(hash_file_descriptors(record))
+        hash_file_descriptors(file)
 
 
 if __name__ == "__main__":
